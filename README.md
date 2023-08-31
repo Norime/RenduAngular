@@ -1,5 +1,10 @@
 # RenduAngular
 
+## Get Started
+Pour commencer, cloner le repo sur votre post
+Ouvrer le avec un terminal et fais un "npm install" (Vous devez avoir Node.js d'installer pour faire cette commande)
+Une fois fais faite un "ng serve" pour lancer le service et aller par défaut sur http://localhost:4200/ (Si ça ne marche pas vérifier votre terminal, l'adresse y est normalement écrite)
+
 ## Projet à réaliser:
 ### Consignes pour le rendu du projet Angular:
 
