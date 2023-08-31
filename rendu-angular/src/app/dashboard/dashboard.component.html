@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<h2>Top ranking cars</h2>
+<div class="cars-menu">
+  <a *ngFor="let car of cars"
+      routerLink="/detail/{{car.id}}">
+      {{car.name}}
+  </a>
+</div>
+
+<!-- <pr-car-search></pr-car-search> -->

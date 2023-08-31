@@ -1,13 +1,42 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { Car } from '../car/car';
+import { CarService } from '../car/car.service';
 
 @Component({
   selector: 'pr-car-detail',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './car-detail.component.html',
   styleUrls: ['./car-detail.component.css']
 })
-export class CarDetailComponent {
+export class CarDetailComponent implements OnInit {
+  car: Car | undefined;
 
+  constructor(
+    private route: ActivatedRoute,
+    private carService: CarService,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.getCar();
+  }
+
+  getCar(): void {
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    this.carService.getCar(id)
+      .subscribe(car => this.car = car);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  save(): void {
+    if (this.car) {
+      this.carService.updateCar(this.car)
+        .subscribe(() => this.goBack());
+    }
+  }
 }
